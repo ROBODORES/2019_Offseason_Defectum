@@ -55,7 +55,7 @@ public class OI {
   JoystickButton setForLiftTwo = new JoystickButton(sideStick, 4);
   JoystickButton liftRobotTwo = new JoystickButton(sideStick, 6);
 
-  JoystickButton debug = new JoystickButton(leftStick, 3);
+  //JoystickButton debug = new JoystickButton(leftStick, 3);
 
   public OI() {
     //debug.whenPressed(new MechanismInit());

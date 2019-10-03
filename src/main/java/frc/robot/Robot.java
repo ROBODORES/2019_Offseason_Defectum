@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
 
   public static OI m_oi;
 
-  public static MechanismInit m_init;
+  //public static MechanismInit m_init;
 
   boolean zeroed = false;
   boolean disabled = false;
@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
     m_jeVois = new JeVois();
     m_oi = new OI();
   
-    m_init = new MechanismInit();
+   // m_init = new MechanismInit();
 
     reset();    
 
@@ -107,11 +107,11 @@ public class Robot extends TimedRobot {
     }
     m_intakeArm.startEbrake();
 
-    if (!m_init.isCompleted() || disabled) m_init.start();
+    //if (!m_init.isCompleted() || disabled) m_init.start();
                                                       
-    if (m_autonomousCommand != null) {
+    /*if (m_autonomousCommand != null) { //For our nonexistent autonomous
       m_autonomousCommand.start();
-    }
+    }*/
   }
 
   @Override
@@ -127,11 +127,11 @@ public class Robot extends TimedRobot {
     }
     m_intakeArm.startEbrake();
 
-    if (!m_init.isCompleted() || disabled) m_init.start();
+    //if (!m_init.isCompleted() || disabled) m_init.start();
 
-    if (m_autonomousCommand != null) {
+    /*if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
-    }
+    }*/
   }
 
   @Override
