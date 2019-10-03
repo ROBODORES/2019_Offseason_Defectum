@@ -79,7 +79,7 @@ public class OI {
     liftRobot.whenPressed(new LiftGo());
     setForLiftTwo.whenPressed(new SetForLiftTwo());
     liftRobotTwo.whenPressed(new LiftGoTwo());
-    //intakeAfterClimb.whenPressed(new SetIntakeArm(SetIntakeArm.climbFinished)); //NEEDS FIXING!
+    //intakeAfterClimb.whenPressed(new SetIntakeArm(SetIntakeArm.climbFinished)); //supposed to be commented out
     returnLift.whenPressed(new ResetLift());
 
     /*manualLift.whenPressed(new ManualLift(ManualLift.up));
