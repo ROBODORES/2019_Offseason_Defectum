@@ -46,7 +46,7 @@ public class OI {
   JoystickButton level1 = new JoystickButton(rightStick, 2);
   JoystickButton level2 = new JoystickButton(rightStick, 6);
   JoystickButton cargoShip = new JoystickButton(leftStick, 4);
-  JoystickButton level3 = new JoystickButton(rightStick, 4);
+  //JoystickButton level3 = new JoystickButton(rightStick, 4);
 
   JoystickButton setForLift = new JoystickButton(sideStick, 3);
   JoystickButton liftRobot = new JoystickButton(sideStick, 5);
@@ -64,7 +64,7 @@ public class OI {
     level1.whenPressed(new LevelOne());//intake arm inside and big arm at first level on rocket for ball/hatch
     level2.whenPressed(new LevelTwo());//intake arm inside and big arm at second level on rocket for ball/hatch
     cargoShip.whenPressed(new CargoShip());
-    level3.whenPressed(new LevelThree());//intake arm inside and big arm at third level on rocket for ball/hatch
+    //level3.whenPressed(new LevelThree());//intake arm inside and big arm at third level on rocket for ball/hatch
 
     intake.whenPressed(new SetIntake(SetIntake.intake));//when pressed rollers spin to intake ball/piston retracts for hatch
     intake.whenReleased(new SetIntake(SetIntake.stop));//when released ends above functions

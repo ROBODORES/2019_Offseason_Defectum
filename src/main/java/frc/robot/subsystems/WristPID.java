@@ -13,7 +13,7 @@ import frc.robot.commands.SetArm;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * Add your docs here.
@@ -21,6 +21,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 public class WristPID extends PIDSubsystem {
   TalonSRX wristMotor = new TalonSRX(RobotMap.wristMotor);
   //VictorSPX wristMotorFollower = new VictorSPX(RobotMap.wristMotorFollower);
+  Encoder wristEncoder = null;
 
   public WristPID() {
     // Intert a subsystem name and PID values here
@@ -30,14 +31,13 @@ public class WristPID extends PIDSubsystem {
 
     getPIDController().setContinuous(false);
     wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-  }
-
-  public double convertEncoderDistance(double encoderVal) {
-    return encoderVal*(90.0/169705.0);
+    wristEncoder = new Encoder(RobotMap.armSourceA, RobotMap.armSourceB);
+    wristEncoder.setReverseDirection(false);
+    wristEncoder.setDistancePerPulse(90.0/540.0);
   }
 
   public void reset() {
-    wristMotor.setSelectedSensorPosition(0);
+    wristEncoder.reset();
   }
 
   @Override
@@ -52,7 +52,7 @@ public class WristPID extends PIDSubsystem {
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     //return wristMotor.getSelectedSensorPosition();
-    return convertEncoderDistance(wristMotor.getSelectedSensorPosition());
+    return wristEncoder.getDistance();
   }
 
   @Override

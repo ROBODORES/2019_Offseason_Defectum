@@ -43,7 +43,7 @@ public class ArmPID extends PIDSubsystem {
   }
 
   public void stop() {
-    //armMotor.set(ControlMode.PercentOutput, 0.0);
+    armMotor.set(ControlMode.PercentOutput, 0.0);
   }
 
   @Override
@@ -70,6 +70,6 @@ public class ArmPID extends PIDSubsystem {
     } else if (output < -limiter) {
       output = -limiter;
     }
-    armMotor.set(ControlMode.PercentOutput, output+0.1);
+    //armMotor.set(ControlMode.PercentOutput, output+0.1);
   }
 }
