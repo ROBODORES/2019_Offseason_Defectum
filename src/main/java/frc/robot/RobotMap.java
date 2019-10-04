@@ -19,8 +19,8 @@ public class RobotMap {
   //SparkMaxs
   public static final int leftMotor = 0;
   public static final int leftMotorFollower = 1;
-  public static final int rightMotor = 3;
-  public static final int rightMotorFollower = 4;
+  public static final int rightMotor = 2;
+  public static final int rightMotorFollower = 3;
 
   //VictorSPXs
   public static final int armMotor = 5;

@@ -35,7 +35,7 @@ public class IntakeArmPID extends PIDSubsystem {
 
     intakeArmEncoder = new Encoder(RobotMap.intakeSourceA, RobotMap.intakeSourceB);
     //intakeArmEncoder.setReverseDirection(true);
-    intakeArmEncoder.setDistancePerPulse(90.0/580);
+    intakeArmEncoder.setDistancePerPulse(1.0);
 
     intakeArmHallEffect = new DigitalInput(RobotMap.intakeHallEffect);
   }
@@ -59,6 +59,7 @@ public class IntakeArmPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
+    System.out.println(intakeArmEncoder.getDistance());
     return intakeArmEncoder.getDistance();
   }
 
@@ -66,13 +67,13 @@ public class IntakeArmPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-    double limiter = 0.75;
+    double limiter = 0.3;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {
       output = -limiter;
     }
-    //intakeArmMotor.set(ControlMode.PercentOutput, output);
+    intakeArmMotor.set(ControlMode.PercentOutput, -output);
   }
 
   public void print() {
@@ -89,7 +90,7 @@ public class IntakeArmPID extends PIDSubsystem {
   }
 
   public void down() {
-    double speed = 0.5;
+    double speed = 0.5; //take it slow
     intakeArmMotor.set(ControlMode.PercentOutput, -speed);
   }
 

@@ -29,7 +29,7 @@ public class Intake extends Subsystem {
   }
 
   public void setMandible(boolean mode) {
-    mandibleSolenoid.set(mode);
+    mandibleSolenoid.set(!mode);
   }
 
   public void intake() {

@@ -19,21 +19,21 @@ import edu.wpi.first.wpilibj.Encoder;
  * Add your docs here.
  */
 public class WristPID extends PIDSubsystem {
-  TalonSRX wristMotor = new TalonSRX(RobotMap.wristMotor);
+  VictorSPX wristMotor = new VictorSPX(RobotMap.wristMotor);
   //VictorSPX wristMotorFollower = new VictorSPX(RobotMap.wristMotorFollower);
   Encoder wristEncoder = null;
 
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("WristPID", 0.009, 0.0, 0.0);
+    super("WristPID", 0.02, 0.0, 0.0);
 
     setAbsoluteTolerance(0.005);
 
     getPIDController().setContinuous(false);
-    wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-    wristEncoder = new Encoder(RobotMap.armSourceA, RobotMap.armSourceB);
+    //wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    wristEncoder = new Encoder(RobotMap.wristSourceA, RobotMap.wristSourceB);
     wristEncoder.setReverseDirection(false);
-    wristEncoder.setDistancePerPulse(90.0/540.0);
+    wristEncoder.setDistancePerPulse(30.75/80.75);
   }
 
   public void reset() {
@@ -52,19 +52,21 @@ public class WristPID extends PIDSubsystem {
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     //return wristMotor.getSelectedSensorPosition();
-    return wristEncoder.getDistance();
+    double offset = -94.0;
+    //System.out.print("WristEncoder: " + (wristEncoder.getDistance()+offset));
+    return wristEncoder.getDistance()+offset;
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
-    double limiter = 0.4;
+    double limiter = 0.8;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {
       output = -limiter;
     }
-    //wristMotor.set(ControlMode.PercentOutput, output);
+    wristMotor.set(ControlMode.PercentOutput, output);
     //wristMotorFollower.set(ControlMode.PercentOutput, output);
   }
 

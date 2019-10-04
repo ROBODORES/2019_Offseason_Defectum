@@ -38,29 +38,29 @@ public class OI {
   public static Joystick sideStick = new Joystick(RobotMap.sideStickPort);
   public static Joystick toggleSwitch = new Joystick(RobotMap.toggleSwitchPort);
 
-  JoystickButton intake = new JoystickButton(rightStick, 1);
+  /*JoystickButton intake = new JoystickButton(rightStick, 1);
   JoystickButton outtake = new JoystickButton(rightStick, 3);
   JoystickButton ballShuttle = new JoystickButton(rightStick, 7);
 
   JoystickButton intakeHeight = new JoystickButton(rightStick, 5);
   JoystickButton level1 = new JoystickButton(rightStick, 2);
   JoystickButton level2 = new JoystickButton(rightStick, 6);
-  JoystickButton cargoShip = new JoystickButton(leftStick, 4);
+  JoystickButton cargoShip = new JoystickButton(leftStick, 4);*/
   //JoystickButton level3 = new JoystickButton(rightStick, 4);
 
-  JoystickButton setForLift = new JoystickButton(sideStick, 3);
+  /*JoystickButton setForLift = new JoystickButton(sideStick, 3);
   JoystickButton liftRobot = new JoystickButton(sideStick, 5);
   JoystickButton returnLift = new JoystickButton(sideStick, 2);
   JoystickButton manualLift = new JoystickButton(leftStick, 6);
   JoystickButton setForLiftTwo = new JoystickButton(sideStick, 4);
-  JoystickButton liftRobotTwo = new JoystickButton(sideStick, 6);
+  JoystickButton liftRobotTwo = new JoystickButton(sideStick, 6);*/
 
   //JoystickButton debug = new JoystickButton(leftStick, 3);
 
   public OI() {
     //debug.whenPressed(new MechanismInit());
 
-    intakeHeight.whenPressed(new IntakeLevel()); //intake arm and big arm down to pick up ball from floor/hatch from wall
+    /*intakeHeight.whenPressed(new IntakeLevel()); //intake arm and big arm down to pick up ball from floor/hatch from wall
     level1.whenPressed(new LevelOne());//intake arm inside and big arm at first level on rocket for ball/hatch
     level2.whenPressed(new LevelTwo());//intake arm inside and big arm at second level on rocket for ball/hatch
     cargoShip.whenPressed(new CargoShip());
@@ -70,17 +70,17 @@ public class OI {
     intake.whenReleased(new SetIntake(SetIntake.stop));//when released ends above functions
 
     outtake.whenPressed(new SetIntake(SetIntake.outtake));//when pressed rollers spin to outtake ball/piston extends for hatch
-    outtake.whenReleased(new SetIntake(SetIntake.stop));//when released ends above functions
+    outtake.whenReleased(new SetIntake(SetIntake.stop));//when released ends above functions*/
 
     /*ballShuttle.whenPressed(new SetIntake(SetIntake.shuttle));
     ballShuttle.whenReleased(new SetIntake(SetIntake.stop));*/
 
-    setForLift.whenPressed(new SetForLift());
+    /*setForLift.whenPressed(new SetForLift());
     liftRobot.whenPressed(new LiftGo());
     setForLiftTwo.whenPressed(new SetForLiftTwo());
     liftRobotTwo.whenPressed(new LiftGoTwo());
     //intakeAfterClimb.whenPressed(new SetIntakeArm(SetIntakeArm.climbFinished)); //supposed to be commented out
-    returnLift.whenPressed(new ResetLift());
+    returnLift.whenPressed(new ResetLift());*/
 
     /*manualLift.whenPressed(new ManualLift(ManualLift.up));
     manualLift.whenReleased(new ManualLift(ManualLift.stop));*/

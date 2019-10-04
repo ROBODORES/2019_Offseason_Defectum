@@ -18,7 +18,7 @@ public class LevelOne extends CommandGroup {
     requires(Robot.m_arm);
 
     addSequential(new SetArm(SetArm.LevelTwoHeight));
-    addSequential(new SetIntakeArm(SetIntakeArm.stowedAway));
+    //addSequential(new SetIntakeArm(SetIntakeArm.stowedAway));
     addSequential(new SetArm(SetArm.LevelOneHeight));
   }
 }

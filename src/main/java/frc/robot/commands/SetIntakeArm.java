@@ -71,27 +71,27 @@ public class SetIntakeArm extends Command {
   }
 
   void stowedAwayPosition() {
-    Robot.m_intakeArm.setSetpoint(40.0);
+    Robot.m_intakeArm.setSetpoint(530.5);
     Robot.m_intakeArm.enable();
   }
 
   void intakePosition() {
-    Robot.m_intakeArm.setSetpoint(-55.0);
+    Robot.m_intakeArm.setSetpoint(-147.5);
     Robot.m_intakeArm.enable();
   }
 
   void toTheFloorPosition() {
-    Robot.m_intakeArm.setSetpoint(-90); //-90.0);
+    Robot.m_intakeArm.setSetpoint(-346.5); //-90.0);
     Robot.m_intakeArm.enable();
   }
 
   void readyForClimb() {
-    Robot.m_intakeArm.setSetpoint(-20.0);
+    Robot.m_intakeArm.setSetpoint(76.5);
     Robot.m_intakeArm.enable();
   }
 
   void climbFinish() {
-    Robot.m_intakeArm.setSetpoint(0);
+    Robot.m_intakeArm.setSetpoint(130.0);
     Robot.m_intakeArm.enable();
   }
 
@@ -100,6 +100,8 @@ public class SetIntakeArm extends Command {
   protected boolean isFinished() {
     double tolerance = 6;
     double error = Math.abs(Robot.m_intakeArm.getSetpoint()-Robot.m_intakeArm.getPosition());
+
+    System.out.println(error);
 
     return error <= tolerance;
   }

@@ -20,7 +20,7 @@ public class MechanismInit extends CommandGroup {
     requires(Robot.m_arm);
 
     //addSequential(new CalibrateIntakeArm());
-    //addSequential(new SetIntakeArm(SetIntakeArm.toTheFloor));
+    //addSequential(new SetIntakeArm(SetIntakeArm.intake));
     //addSequential(new LevelOne());
   }
 }
