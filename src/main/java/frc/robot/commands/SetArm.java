@@ -103,11 +103,11 @@ public class SetArm extends Command {
 
   void levelOne() {
     if (hatchMode) { 
-      Robot.m_arm.setSetpoint(52.0);
-      Robot.m_wrist.setSetpoint(32.0);
+      Robot.m_arm.setSetpoint(51.5);
+      Robot.m_wrist.setSetpoint(39.0);
     } else {
-      Robot.m_arm.setSetpoint(64.0);
-      Robot.m_wrist.setSetpoint(25.0);
+      Robot.m_arm.setSetpoint(66.5);
+      Robot.m_wrist.setSetpoint(23.5);
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
@@ -115,11 +115,11 @@ public class SetArm extends Command {
 
   void levelTwo() {
     if (hatchMode) { 
-      Robot.m_arm.setSetpoint(92.0);
-      Robot.m_wrist.setSetpoint(-8.0);
+      Robot.m_arm.setSetpoint(97.0);
+      Robot.m_wrist.setSetpoint(-7.0);
     } else {
-      Robot.m_arm.setSetpoint(106.0);
-      Robot.m_wrist.setSetpoint(-18.5);
+      Robot.m_arm.setSetpoint(110.14);
+      Robot.m_wrist.setSetpoint(-20);
     }
     Robot.m_arm.enable();
     if (nohit) Robot.m_wrist.enable();
@@ -129,7 +129,7 @@ public class SetArm extends Command {
     if (hatchMode) { 
       levelOne();
     } else {
-      Robot.m_arm.setSetpoint(92.0);
+      Robot.m_arm.setSetpoint(90.0);
       Robot.m_wrist.setSetpoint(-90.0);
     }
     Robot.m_arm.enable();
