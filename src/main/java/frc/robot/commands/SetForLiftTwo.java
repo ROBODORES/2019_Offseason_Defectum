@@ -19,6 +19,6 @@ public class SetForLiftTwo extends CommandGroup {
     addSequential(new SetIntakeArm(SetIntakeArm.toTheFloor));
     addSequential(new SetArm(SetArm.returnHome));
     addParallel(new LiftUp());
-    addSequential(new SetIntakeArm(SetIntakeArm.intake));
+    addSequential(new SetIntakeArm(SetIntakeArm.secondClimbReady));
   }
 }

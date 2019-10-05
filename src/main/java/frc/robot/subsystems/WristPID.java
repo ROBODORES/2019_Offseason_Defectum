@@ -53,14 +53,14 @@ public class WristPID extends PIDSubsystem {
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     //return wristMotor.getSelectedSensorPosition();
     double offset = -94.0;
-    //System.out.print("WristEncoder: " + (wristEncoder.getDistance()+offset));
+    System.out.print("WristEncoder: " + (wristEncoder.getDistance()+offset));
     return wristEncoder.getDistance()+offset;
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
-    double limiter = 0.8;
+    double limiter = 0.3;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {

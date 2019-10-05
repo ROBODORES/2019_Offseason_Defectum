@@ -17,6 +17,7 @@ public class SetIntakeArm extends Command {
   public static int toTheFloor = 3;
   public static int climbReady = 4;
   public static int climbFinished = 5;
+  public static int secondClimbReady = 6;
 
   int mode;
   boolean hatchMode;
@@ -67,6 +68,9 @@ public class SetIntakeArm extends Command {
       case 5:
         climbFinish();
       break;
+      case 6:
+      readyForSecondClimb();
+      break;
     }
   }
 
@@ -90,6 +94,11 @@ public class SetIntakeArm extends Command {
     Robot.m_intakeArm.enable();
   }
 
+  void readyForSecondClimb() {
+    Robot.m_intakeArm.setSetpoint(-147.5);
+    Robot.m_intakeArm.enable();
+  }
+
   void climbFinish() {
     Robot.m_intakeArm.setSetpoint(130.0);
     Robot.m_intakeArm.enable();
@@ -100,8 +109,6 @@ public class SetIntakeArm extends Command {
   protected boolean isFinished() {
     double tolerance = 6;
     double error = Math.abs(Robot.m_intakeArm.getSetpoint()-Robot.m_intakeArm.getPosition());
-
-    System.out.println(error);
 
     return error <= tolerance;
   }

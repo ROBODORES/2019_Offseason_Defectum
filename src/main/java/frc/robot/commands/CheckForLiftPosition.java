@@ -29,7 +29,7 @@ public class CheckForLiftPosition extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_arm.getPosition() <= 12.0 && Robot.m_intakeArm.getPosition() <= -10.0;
+    return Robot.m_arm.getPosition() <= 60.0 && Robot.m_intakeArm.getPosition() <= 80.0;
   }
 
   // Called once after isFinished returns true

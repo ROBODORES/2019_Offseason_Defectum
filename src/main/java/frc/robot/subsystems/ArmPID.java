@@ -35,7 +35,7 @@ public class ArmPID extends PIDSubsystem {
 
     armEncoder = new Encoder(RobotMap.armSourceA, RobotMap.armSourceB);
     armEncoder.setReverseDirection(true);
-    armEncoder.setDistancePerPulse(672.0/5315.0);
+    armEncoder.setDistancePerPulse(35.8/63511.0);
   }
 
   public void reset() {
@@ -58,7 +58,8 @@ public class ArmPID extends PIDSubsystem {
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     double offset = 46.0;
-    //System.out.println("Arm encoder: " + (armEncoder.getDistance()+offset));
+    //double offset = 0.0;
+    System.out.println("Arm encoder: " + (armEncoder.getDistance()+offset));
     return armEncoder.getDistance()+offset;
   }
 
@@ -66,7 +67,7 @@ public class ArmPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-    double limiter = 0.5;
+    double limiter = 0.3;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {

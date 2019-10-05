@@ -52,9 +52,9 @@ public class SetArm extends Command {
     if (Robot.m_arm.getPosition() >= 30.0) nohit = true;
 
     if (Robot.m_intakeArm.getPosition() < 0.0) {
-      Robot.m_intakeArm.setSetpoint(-90.0);
+      Robot.m_intakeArm.setSetpoint(-346.5);
       Robot.m_intakeArm.enable();
-      if (Robot.m_intakeArm.getPosition() < -84.0) {
+      if (Robot.m_intakeArm.getPosition() < -300.0) {
         isOOTW = true;
       }
     } else {
@@ -94,7 +94,7 @@ public class SetArm extends Command {
     if (hatchMode) {
       levelOne();
     } else {
-      Robot.m_arm.setSetpoint(33.0);
+      Robot.m_arm.setSetpoint(40.0);
       Robot.m_wrist.setSetpoint(32.0);
     }
     Robot.m_arm.enable();
@@ -156,7 +156,7 @@ public class SetArm extends Command {
   }
 
   void home() {
-    Robot.m_arm.setSetpoint(46.0);
+    Robot.m_arm.setSetpoint(55.0);
     Robot.m_wrist.setSetpoint(-94.0);
     Robot.m_arm.enable();
     Robot.m_wrist.enable();

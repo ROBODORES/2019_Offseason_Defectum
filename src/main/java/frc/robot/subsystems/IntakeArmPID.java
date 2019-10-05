@@ -23,7 +23,7 @@ public class IntakeArmPID extends PIDSubsystem {
   DigitalInput intakeArmHallEffect = null;
 
   public IntakeArmPID() {
-    super("IntakeArmPID", 0.08, 0.0, 0.0);
+    super("IntakeArmPID", 0.008, 0.0, 0.0);
     setAbsoluteTolerance(0.05);
 
     getPIDController().setContinuous(false);
@@ -59,7 +59,7 @@ public class IntakeArmPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    System.out.println(intakeArmEncoder.getDistance());
+    System.out.println("intakeArm: " + intakeArmEncoder.getDistance());
     return intakeArmEncoder.getDistance();
   }
 
@@ -67,13 +67,13 @@ public class IntakeArmPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-    double limiter = 0.3;
+    double limiter = 0.6;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {
       output = -limiter;
     }
-    intakeArmMotor.set(ControlMode.PercentOutput, -output);
+    intakeArmMotor.set(ControlMode.PercentOutput, output);
   }
 
   public void print() {
@@ -90,7 +90,7 @@ public class IntakeArmPID extends PIDSubsystem {
   }
 
   public void down() {
-    double speed = 0.5; //take it slow
+    double speed = 0.3; //take it slow
     intakeArmMotor.set(ControlMode.PercentOutput, -speed);
   }
 
