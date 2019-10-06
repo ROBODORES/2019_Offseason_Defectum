@@ -42,11 +42,11 @@ public class OI {
   JoystickButton outtake = new JoystickButton(rightStick, 3);
   //JoystickButton ballShuttle = new JoystickButton(rightStick, 7);
 
-  JoystickButton intakeHeight = new JoystickButton(rightStick, 5);
-  JoystickButton level1 = new JoystickButton(rightStick, 2);
-  JoystickButton level2 = new JoystickButton(rightStick, 6);
-  JoystickButton cargoShip = new JoystickButton(leftStick, 4);//hi riley
-  //JoystickButton level3 = new JoystickButton(rightStick, 4);
+  JoystickButton intakeHeight = new JoystickButton(rightStick, 2);
+  JoystickButton level1 = new JoystickButton(rightStick, 6);
+  JoystickButton level2 = new JoystickButton(rightStick, 4);
+  JoystickButton cargoShip = new JoystickButton(rightStick, 5);//hi riley
+  //JoystickButton level3 = new JoystickButton(rightStick, 4); //HI!
 
   JoystickButton setForLift = new JoystickButton(sideStick, 3);
   JoystickButton liftRobot = new JoystickButton(sideStick, 5);

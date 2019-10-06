@@ -19,7 +19,8 @@ public class CargoShip extends CommandGroup {
     requires(Robot.m_intakeArm);
     requires(Robot.m_arm);
   
-    addSequential(new SetArm(SetArm.cargoShipHeight));
+    addSequential(new SetArm(SetArm.LevelTwoHeight));
     addSequential(new SetIntakeArm(SetIntakeArm.stowedAway));
+    addSequential(new SetArm(SetArm.cargoShipHeight));
   }
 }

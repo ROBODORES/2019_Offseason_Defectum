@@ -49,13 +49,13 @@ public class SetArm extends Command {
 
     isOOTW = false;
 
-    if (Robot.m_arm.getPosition() >= 30.0) nohit = true;
+    if (Robot.m_arm.getPosition() >= 500.0) nohit = true; //is it stowed away?
 
-    if (Robot.m_intakeArm.getPosition() < 0.0) {
-      Robot.m_intakeArm.setSetpoint(-346.5);
+    if (Robot.m_intakeArm.getPosition() < 300.0) { //if it's over the arm
+      Robot.m_intakeArm.setSetpoint(-346.5); //to the floor
       Robot.m_intakeArm.enable();
-      if (Robot.m_intakeArm.getPosition() < -300.0) {
-        isOOTW = true;
+      if (Robot.m_intakeArm.getPosition() < -300.0) { //if at the floor
+        isOOTW = true; //ISOOTW!!!!
       }
     } else {
       isOOTW = true;
@@ -94,7 +94,7 @@ public class SetArm extends Command {
     if (hatchMode) {
       levelOne();
     } else {
-      Robot.m_arm.setSetpoint(40.0);
+      Robot.m_arm.setSetpoint(45.0);
       Robot.m_wrist.setSetpoint(32.0);
     }
     Robot.m_arm.enable();
@@ -103,10 +103,10 @@ public class SetArm extends Command {
 
   void levelOne() {
     if (hatchMode) { 
-      Robot.m_arm.setSetpoint(48.5);
-      Robot.m_wrist.setSetpoint(60.0);
+      Robot.m_arm.setSetpoint(50.0);
+      Robot.m_wrist.setSetpoint(110.0);
     } else {
-      Robot.m_arm.setSetpoint(66.5);
+      Robot.m_arm.setSetpoint(64.5);
       Robot.m_wrist.setSetpoint(60.0);
     }
     Robot.m_arm.enable();
@@ -115,11 +115,11 @@ public class SetArm extends Command {
 
   void levelTwo() {
     if (hatchMode) { 
-      Robot.m_arm.setSetpoint(97.0);
-      Robot.m_wrist.setSetpoint(0.0);
+      Robot.m_arm.setSetpoint(100.0);
+      Robot.m_wrist.setSetpoint(40.0);
     } else {
-      Robot.m_arm.setSetpoint(110.14);
-      Robot.m_wrist.setSetpoint(0.0);
+      Robot.m_arm.setSetpoint(105.14);
+      Robot.m_wrist.setSetpoint(40.0);
     }
     Robot.m_arm.enable();
     if (nohit) Robot.m_wrist.enable();
@@ -129,8 +129,8 @@ public class SetArm extends Command {
     if (hatchMode) { 
       levelOne();
     } else {
-      Robot.m_arm.setSetpoint(110.0);
-      Robot.m_wrist.setSetpoint(-90.0);
+      Robot.m_arm.setSetpoint(105.0);
+      Robot.m_wrist.setSetpoint(-70.0);
     }
     Robot.m_arm.enable();
     if (nohit) Robot.m_wrist.enable();
@@ -150,7 +150,7 @@ public class SetArm extends Command {
 
   void setForLift() {
     Robot.m_arm.setSetpoint(106.0);
-    //Robot.m_wrist.setSetpoint(-94.0);
+    Robot.m_wrist.setSetpoint(-0.0);
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
   }

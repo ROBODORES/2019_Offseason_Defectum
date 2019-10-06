@@ -85,7 +85,7 @@ public class SetIntakeArm extends Command {
   }
 
   void toTheFloorPosition() {
-    Robot.m_intakeArm.setSetpoint(-346.5); //-90.0);
+    Robot.m_intakeArm.setSetpoint(-346.5);
     Robot.m_intakeArm.enable();
   }
 
@@ -109,6 +109,8 @@ public class SetIntakeArm extends Command {
   protected boolean isFinished() {
     double tolerance = 6;
     double error = Math.abs(Robot.m_intakeArm.getSetpoint()-Robot.m_intakeArm.getPosition());
+
+    if (error <= tolerance) System.out.println("finished intakeArm");
 
     return error <= tolerance;
   }

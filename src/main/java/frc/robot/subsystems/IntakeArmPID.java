@@ -59,7 +59,7 @@ public class IntakeArmPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    System.out.println("intakeArm: " + intakeArmEncoder.getDistance());
+    //System.out.println("intakeArm: " + intakeArmEncoder.getDistance());
     return intakeArmEncoder.getDistance();
   }
 
