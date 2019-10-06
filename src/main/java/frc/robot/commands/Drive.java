@@ -50,7 +50,7 @@ public class Drive extends Command {
     double limiter = 0.5;
 
     //Robot.m_driveTrain.tankDrive(speed, speed);
-    Robot.m_driveTrain.arcadeDrive(rightSpeed*limiter+speed, twistSpeed*limiter);
+    Robot.m_driveTrain.tankDrive(leftSpeed*limiter+speed, rightSpeed*limiter+speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

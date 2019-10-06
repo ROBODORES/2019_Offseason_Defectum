@@ -103,11 +103,11 @@ public class SetArm extends Command {
 
   void levelOne() {
     if (hatchMode) { 
-      Robot.m_arm.setSetpoint(51.5);
-      Robot.m_wrist.setSetpoint(39.0);
+      Robot.m_arm.setSetpoint(48.5);
+      Robot.m_wrist.setSetpoint(60.0);
     } else {
       Robot.m_arm.setSetpoint(66.5);
-      Robot.m_wrist.setSetpoint(23.5);
+      Robot.m_wrist.setSetpoint(60.0);
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
@@ -116,10 +116,10 @@ public class SetArm extends Command {
   void levelTwo() {
     if (hatchMode) { 
       Robot.m_arm.setSetpoint(97.0);
-      Robot.m_wrist.setSetpoint(-7.0);
+      Robot.m_wrist.setSetpoint(0.0);
     } else {
       Robot.m_arm.setSetpoint(110.14);
-      Robot.m_wrist.setSetpoint(-20);
+      Robot.m_wrist.setSetpoint(0.0);
     }
     Robot.m_arm.enable();
     if (nohit) Robot.m_wrist.enable();
@@ -129,7 +129,7 @@ public class SetArm extends Command {
     if (hatchMode) { 
       levelOne();
     } else {
-      Robot.m_arm.setSetpoint(90.0);
+      Robot.m_arm.setSetpoint(110.0);
       Robot.m_wrist.setSetpoint(-90.0);
     }
     Robot.m_arm.enable();
@@ -150,7 +150,7 @@ public class SetArm extends Command {
 
   void setForLift() {
     Robot.m_arm.setSetpoint(106.0);
-    Robot.m_wrist.setSetpoint(-94.0);
+    //Robot.m_wrist.setSetpoint(-94.0);
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
   }
@@ -164,11 +164,11 @@ public class SetArm extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    double tolerance = 10;
+    double tolerance = 5;
     double error = Math.abs(Robot.m_arm.getSetpoint()-Robot.m_arm.getPosition());
     double errorw = Math.abs(Robot.m_wrist.getSetpoint()-Robot.m_wrist.getPosition());
 
-    System.out.println(errorw);
+    //System.out.println(errorw);
     return ((error <= tolerance) && isOOTW);
   }
 

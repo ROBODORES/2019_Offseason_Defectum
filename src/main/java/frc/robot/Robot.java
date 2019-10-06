@@ -24,6 +24,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.Encoder;
 
 //import java.awt.List;
 
@@ -61,11 +62,16 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
 
+  //Encoder enc;
+
   @Override
   public void robotInit() {
     m_driveTrain = new DriveTrain();
     m_arm = new ArmPID();
     m_wrist = new WristPID();
+    //enc = new Encoder(RobotMap.wristSourceA, RobotMap.wristSourceB);
+    //enc.setReverseDirection(false);
+    //enc.setDistancePerPulse(30.75/80.75);
     m_intake = new Intake();
     m_LEDs = new LEDs();
     m_lift = new Lift();
@@ -84,6 +90,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
+   // m_wrist.returnPIDInput();
   }
 
   @Override
@@ -101,7 +108,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    if(!zeroed) {
+    if (!zeroed) {
       reset();
       zeroed = true;
     }

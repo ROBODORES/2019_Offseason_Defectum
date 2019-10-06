@@ -23,7 +23,7 @@ public class ArmPID extends PIDSubsystem {
   Encoder armEncoder = null;
 
   public ArmPID() {
-    super("ArmPID", 0.02, 0.0, 0.0);
+    super("ArmPID", 0.08, 0.0, 0.0);
     setAbsoluteTolerance(0.05);
 
     getPIDController().setContinuous(false);
@@ -67,7 +67,7 @@ public class ArmPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-    double limiter = 0.3;
+    double limiter = 0.5;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {
