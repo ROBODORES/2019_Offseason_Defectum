@@ -26,6 +26,9 @@ import frc.robot.commands.LiftGo;
 import frc.robot.commands.SetForLiftTwo;
 import frc.robot.commands.LiftGoTwo;
 import frc.robot.commands.ResetLift;
+
+import frc.robot.commands.NudgeArm;
+import frc.robot.commands.NudgeWrist;
 //import frc.robot.commands.ManualLift;
 
 /**
@@ -55,6 +58,13 @@ public class OI {
   JoystickButton setForLiftTwo = new JoystickButton(sideStick, 4);
   JoystickButton liftRobotTwo = new JoystickButton(sideStick, 6);
 
+  //nudge buttons for in-match-calibration [yes, it's probably as terrible as it sounds]
+  JoystickButton nudgeArmUp = new JoystickButton(leftStick, 3);
+  JoystickButton nudgeArmDown = new JoystickButton(leftStick, 5);
+  JoystickButton nudgeWristUp = new JoystickButton(leftStick, 4);
+  JoystickButton nudgeWristDown = new JoystickButton(leftStick, 6);
+
+
   //JoystickButton debug = new JoystickButton(leftStick, 3);
 
   public OI() {
@@ -81,6 +91,13 @@ public class OI {
     liftRobotTwo.whenPressed(new LiftGoTwo());
     //intakeAfterClimb.whenPressed(new SetIntakeArm(SetIntakeArm.climbFinished)); //supposed to be commented out
     returnLift.whenPressed(new ResetLift());
+
+    //nudge buttons
+    nudgeArmUp.whenPressed(new NudgeArm(1.0));
+    nudgeArmDown.whenPressed(new NudgeArm(-1.0));
+    nudgeWristUp.whenPressed(new NudgeWrist(1.0));
+    nudgeWristDown.whenPressed(new NudgeWrist(-1.0));
+
 
     /*manualLift.whenPressed(new ManualLift(ManualLift.up));
     manualLift.whenReleased(new ManualLift(ManualLift.stop));*/

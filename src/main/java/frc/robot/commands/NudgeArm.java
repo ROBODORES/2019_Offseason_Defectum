@@ -7,13 +7,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class Drive extends Command {
-  public Drive() {
-    requires(Robot.m_driveTrain);
+public class NudgeArm extends Command {
+  public double nudgeAngle;
+
+  public NudgeArm(double angle) {
+    // Use requires() here to declare subsystem dependencies
+    requires(Robot.m_arm);
+    nudgeAngle = angle;
   }
 
   // Called just before this Command runs the first time
@@ -24,41 +27,19 @@ public class Drive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double leftSpeed = -Robot.m_oi.leftStick.getY();
-    double rightSpeed = -Robot.m_oi.rightStick.getY();
-    double twistSpeed = Robot.m_oi.rightStick.getRawAxis(3);
-    double throttleLimiter = 0.6;
-    double twistLimiter = 0.4;
-
-    //Robot.m_driveTrain.tankDrive(leftSpeed*limiter, rightSpeed*limiter);
-    Robot.m_driveTrain.arcadeDrive(rightSpeed*throttleLimiter, twistSpeed*twistLimiter);
-
-    if (Robot.m_oi.leftStick.getRawButtonReleased(RobotMap.gearSwitcherButton)) {
-      Robot.m_driveTrain.switchGear();
-    }
-  }
-
-  void driveStraight() {
-    double speed = 0.4;
-    double leftSpeed = -Robot.m_oi.leftStick.getY();
-    double rightSpeed = -Robot.m_oi.rightStick.getY();
-    double twistSpeed = Robot.m_oi.rightStick.getRawAxis(3);
-    double limiter = 0.5;
-
-    //Robot.m_driveTrain.tankDrive(speed, speed);
-    Robot.m_driveTrain.tankDrive(leftSpeed*limiter+speed, rightSpeed*limiter+speed);
+    Robot.m_arm.nudgeArm(nudgeAngle);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_driveTrain.tankDrive(0.0, 0.0);
+    Robot.m_arm.enable();
   }
 
   // Called when another command which requires one or more of the same

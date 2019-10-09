@@ -21,6 +21,7 @@ public class ArmPID extends PIDSubsystem {
   VictorSPX armMotor = null;
   //VictorSPX armMotorFollower = null;
   Encoder armEncoder = null;
+  double armOffset;
 
   public ArmPID() {
     super("ArmPID", 0.05, 0.00005, 0.005);
@@ -32,6 +33,7 @@ public class ArmPID extends PIDSubsystem {
     //armMotorFollower = new VictorSPX(RobotMap.armMotorFollower);
     //armMotorFollower.follow(armMotor);
 
+    armOffset = 46.0; //From initial calibration
 
     armEncoder = new Encoder(RobotMap.armSourceA, RobotMap.armSourceB);
     armEncoder.setReverseDirection(true);
@@ -46,6 +48,10 @@ public class ArmPID extends PIDSubsystem {
     armMotor.set(ControlMode.PercentOutput, 0.0);
   }
 
+  public void nudgeArm(double angle) {
+    armOffset -= angle; //subtract from offset angle to move the mech up
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -57,21 +63,19 @@ public class ArmPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    double offset = 46.0;
-    //double offset = 0.0;
-    return armEncoder.getDistance()+offset;
+    return armEncoder.getDistance()+armOffset;
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-    double limiter = 0.6;
+    double limiter = 0.4;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {
       output = -limiter;
     }
-    armMotor.set(ControlMode.PercentOutput, output+0.1);
+    armMotor.set(ControlMode.PercentOutput, output+0.15);
   }
 }

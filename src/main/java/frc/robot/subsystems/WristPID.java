@@ -22,22 +22,29 @@ public class WristPID extends PIDSubsystem {
   VictorSPX wristMotor = new VictorSPX(RobotMap.wristMotor);
   //VictorSPX wristMotorFollower = new VictorSPX(RobotMap.wristMotorFollower);
   Encoder wristEncoder = null;
+  double wristOffset;
 
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("WristPID", 0.02, 0.0, 0.0);
+    super("WristPID", 0.02, 0.001, 0.005);
 
     setAbsoluteTolerance(0.005);
+
+    wristOffset = -98.0; //From initial calibration
 
     getPIDController().setContinuous(false);
     //wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
     wristEncoder = new Encoder(RobotMap.wristSourceA, RobotMap.wristSourceB);
     wristEncoder.setReverseDirection(false);
-    wristEncoder.setDistancePerPulse(30.75/80.75);
+    wristEncoder.setDistancePerPulse(9.0/3400.0);
   }
 
   public void reset() {
     wristEncoder.reset();
+  }
+
+  public void nudgeWrist(double angle){
+    wristOffset -= angle; //subtract from offset angle to move the mech up
   }
 
   @Override
@@ -52,8 +59,9 @@ public class WristPID extends PIDSubsystem {
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     //return wristMotor.getSelectedSensorPosition();
-    double offset = -94.0;
-    return wristEncoder.getDistance()+offset;
+    //make more negative to move wrist higher
+    //System.out.println((wristEncoder.getDistance()) + offset);
+    return wristEncoder.getDistance()+wristOffset;
   }
 
   @Override
@@ -65,7 +73,7 @@ public class WristPID extends PIDSubsystem {
     } else if (output < -limiter) {
       output = -limiter;
     }
-    wristMotor.set(ControlMode.PercentOutput, output);
+    wristMotor.set(ControlMode.PercentOutput, -output);
     //wristMotorFollower.set(ControlMode.PercentOutput, output);
   }
 
