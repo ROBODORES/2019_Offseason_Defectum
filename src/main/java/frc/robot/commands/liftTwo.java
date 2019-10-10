@@ -33,15 +33,15 @@ public class liftTwo extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    double downPosition = -366.5;
+    double downPosition = -450.0;
     return (Robot.m_intakeArm.getPosition() <= downPosition) || Robot.m_lift.topLimitTriggered();
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
+  protected void end() { 
     Robot.m_intakeArm.stop();
-    Robot.m_intakeArm.setSetpoint(-366.5);
+    Robot.m_intakeArm.setSetpoint(-450.0);
     Robot.m_intakeArm.enable();
     Robot.m_lift.stop();
   }

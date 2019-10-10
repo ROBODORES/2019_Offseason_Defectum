@@ -33,7 +33,7 @@ public class ArmPID extends PIDSubsystem {
     //armMotorFollower = new VictorSPX(RobotMap.armMotorFollower);
     //armMotorFollower.follow(armMotor);
 
-    armOffset = 46.0; //From initial calibration
+    armOffset = 47.0; //From initial calibration
 
     armEncoder = new Encoder(RobotMap.armSourceA, RobotMap.armSourceB);
     armEncoder.setReverseDirection(true);
@@ -70,12 +70,14 @@ public class ArmPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
+
     double limiter = 0.4;
+
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {
       output = -limiter;
     }
-    armMotor.set(ControlMode.PercentOutput, output+0.15);
+    armMotor.set(ControlMode.PercentOutput, output+0.10);
   }
 }

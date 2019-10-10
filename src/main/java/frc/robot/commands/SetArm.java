@@ -24,8 +24,6 @@ public class SetArm extends Command {
   boolean hatchMode;
   boolean isOOTW = false; //is out of the way
 
-  boolean nohit = false;
-
   public SetArm(int mode) {
     // Use requires() here to declare subsystem dependencies
     this.mode = mode;
@@ -48,8 +46,6 @@ public class SetArm extends Command {
     hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
 
     isOOTW = false;
-
-    if (Robot.m_arm.getPosition() >= 500.0) nohit = true; //is it stowed away?
 
     if (Robot.m_intakeArm.getPosition() < 300.0) { //if it's over the arm
       Robot.m_intakeArm.setSetpoint(-346.5); //to the floor
@@ -106,8 +102,8 @@ public class SetArm extends Command {
       Robot.m_arm.setSetpoint(57.7);
       Robot.m_wrist.setSetpoint(32.3);
     } else {
-      Robot.m_arm.setSetpoint(78.0);
-      Robot.m_wrist.setSetpoint(17.0);
+      Robot.m_arm.setSetpoint(72.0);
+      Robot.m_wrist.setSetpoint(21.0);
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
@@ -122,7 +118,7 @@ public class SetArm extends Command {
       Robot.m_wrist.setSetpoint(-10.0);
     }
     Robot.m_arm.enable();
-    if (nohit) Robot.m_wrist.enable();
+    Robot.m_wrist.enable();
   }
 
   void cargoShip() {
@@ -133,7 +129,7 @@ public class SetArm extends Command {
       Robot.m_wrist.setSetpoint(-45.0);
     }
     Robot.m_arm.enable();
-    if (nohit) Robot.m_wrist.enable();
+    Robot.m_wrist.enable();
   }
 
   void levelThree() {
@@ -168,7 +164,7 @@ public class SetArm extends Command {
     double error = Math.abs(Robot.m_arm.getSetpoint()-Robot.m_arm.getPosition());
     double errorw = Math.abs(Robot.m_wrist.getSetpoint()-Robot.m_wrist.getPosition());
 
-    //System.out.println(errorw);
+    //System.out.println(error);
     return ((error <= tolerance) && isOOTW);
   }
 
@@ -177,7 +173,6 @@ public class SetArm extends Command {
   protected void end() {
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
-    nohit = true; //safety net maybe
   }
 
   // Called when another command which requires one or more of the same

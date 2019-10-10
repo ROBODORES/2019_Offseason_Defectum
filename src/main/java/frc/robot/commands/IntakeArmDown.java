@@ -32,7 +32,7 @@ public class IntakeArmDown extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    double downPosition = -396.5;
+    double downPosition = -450.0;
     return Robot.m_intakeArm.getPosition() <= downPosition;
   }
 
@@ -40,7 +40,7 @@ public class IntakeArmDown extends Command {
   @Override
   protected void end() {
     Robot.m_intakeArm.stop();
-    Robot.m_intakeArm.setSetpoint(-396.5);
+    Robot.m_intakeArm.setSetpoint(-450.0);
     Robot.m_intakeArm.enable();
   }
 

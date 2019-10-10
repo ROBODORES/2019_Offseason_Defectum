@@ -30,7 +30,7 @@ public class WristPID extends PIDSubsystem {
 
     setAbsoluteTolerance(0.005);
 
-    wristOffset = -98.0; //From initial calibration
+    wristOffset = -99.0; //From initial calibration
 
     getPIDController().setContinuous(false);
     //wristMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
@@ -67,7 +67,7 @@ public class WristPID extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
-    double limiter = 0.5;
+    double limiter = 0.4;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {

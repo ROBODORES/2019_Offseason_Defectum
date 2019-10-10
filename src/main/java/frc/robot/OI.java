@@ -93,10 +93,10 @@ public class OI {
     returnLift.whenPressed(new ResetLift());
 
     //nudge buttons
-    nudgeArmUp.whenPressed(new NudgeArm(1.0));
-    nudgeArmDown.whenPressed(new NudgeArm(-1.0));
-    nudgeWristUp.whenPressed(new NudgeWrist(1.0));
-    nudgeWristDown.whenPressed(new NudgeWrist(-1.0));
+    nudgeArmUp.whenPressed(new NudgeArm(2.0));
+    nudgeArmDown.whenPressed(new NudgeArm(-2.0));
+    nudgeWristUp.whenPressed(new NudgeWrist(2.0));
+    nudgeWristDown.whenPressed(new NudgeWrist(-2.0));
 
 
     /*manualLift.whenPressed(new ManualLift(ManualLift.up));

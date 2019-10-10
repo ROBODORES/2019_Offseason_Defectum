@@ -107,7 +107,7 @@ public class SetIntakeArm extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    double tolerance = 6;
+    double tolerance = 50;
     double error = Math.abs(Robot.m_intakeArm.getSetpoint()-Robot.m_intakeArm.getPosition());
 
     if (error <= tolerance) System.out.println("finished intakeArm");
