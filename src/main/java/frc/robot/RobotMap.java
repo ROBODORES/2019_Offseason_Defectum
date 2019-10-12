@@ -6,6 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import edu.wpi.first.wpilibj.I2C;
+
 public class RobotMap {
 
   // Joysticks
@@ -53,4 +55,7 @@ public class RobotMap {
 
   //LEDs
   public static final int blinkinPort = 9;
+
+  //PixyCam
+  public I2C pixyPort = new I2C(edu.wpi.first.wpilibj.I2C.Port.kOnboard, 0x54);
 }
