@@ -33,7 +33,7 @@ public class Drive extends Command {
     //Robot.m_driveTrain.tankDrive(leftSpeed*limiter, rightSpeed*limiter);
     Robot.m_driveTrain.arcadeDrive(rightSpeed*throttleLimiter, twistSpeed*twistLimiter);
 
-    if (Robot.m_oi.leftStick.getRawButtonReleased(RobotMap.gearSwitcherButton)) {
+    if (Robot.m_oi.rightStick.getRawButtonReleased(RobotMap.gearSwitcherButton)) {
       Robot.m_driveTrain.switchGear();
     }
   }
@@ -42,7 +42,7 @@ public class Drive extends Command {
     double speed = 0.4;
     double leftSpeed = -Robot.m_oi.leftStick.getY();
     double rightSpeed = -Robot.m_oi.rightStick.getY();
-    double twistSpeed = Robot.m_oi.rightStick.getRawAxis(3);
+    double twistSpeed = Robot.m_oi.rightStick.getX();//Robot.m_oi.rightStick.getRawAxis(3);
     double limiter = 0.5;
 
     //Robot.m_driveTrain.tankDrive(speed, speed);

@@ -26,7 +26,7 @@ public class WristPID extends PIDSubsystem {
 
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("WristPID", 0.02, 0.001, 0.005);
+    super("WristPID", 0.04, 0.001, 0.005);
 
     setAbsoluteTolerance(0.005);
 
@@ -60,7 +60,7 @@ public class WristPID extends PIDSubsystem {
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     //return wristMotor.getSelectedSensorPosition();
     //make more negative to move wrist higher
-    //System.out.println((wristEncoder.getDistance()) + offset);
+    System.out.println((wristEncoder.getDistance()) + wristOffset);
     return wristEncoder.getDistance()+wristOffset;
   }
 

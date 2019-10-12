@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.CalibrateIntakeArm;
 import frc.robot.commands.LevelOne;
 import frc.robot.commands.SetIntakeArm;
+import frc.robot.commands.RaiseWithPreload;
 import frc.robot.Robot;
 
 public class MechanismInit extends CommandGroup {
@@ -21,6 +22,7 @@ public class MechanismInit extends CommandGroup {
 
     addSequential(new CalibrateIntakeArm());
     addSequential(new SetIntakeArm(SetIntakeArm.toTheFloor));
+    addSequential(new RaiseWithPreload());
     addSequential(new LevelOne());
   }
 }

@@ -14,7 +14,7 @@ public class RobotMap {
   public static final int sideStickPort = 2;
   public static final int toggleSwitchPort = 3;
 
-  public static final int gearSwitcherButton = 2;
+  public static final int gearSwitcherButton = 3;
 
   //SparkMaxs
   public static final int leftMotor = 0;

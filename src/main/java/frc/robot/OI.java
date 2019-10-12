@@ -41,13 +41,13 @@ public class OI {
   public static Joystick sideStick = new Joystick(RobotMap.sideStickPort);
   public static Joystick toggleSwitch = new Joystick(RobotMap.toggleSwitchPort);
 
-  JoystickButton intake = new JoystickButton(rightStick, 1);
-  JoystickButton outtake = new JoystickButton(rightStick, 3);
+  JoystickButton intake = new JoystickButton(leftStick, 1);
+  JoystickButton outtake = new JoystickButton(leftStick, 2);
   //JoystickButton ballShuttle = new JoystickButton(rightStick, 7);
 
-  JoystickButton intakeHeight = new JoystickButton(rightStick, 2);
-  JoystickButton level1 = new JoystickButton(rightStick, 6);
-  JoystickButton level2 = new JoystickButton(rightStick, 4);
+  JoystickButton intakeHeight = new JoystickButton(rightStick, 2); 
+  JoystickButton level1 = new JoystickButton(rightStick, 6); 
+  JoystickButton level2 = new JoystickButton(rightStick, 4); 
   JoystickButton cargoShip = new JoystickButton(rightStick, 5);//hi riley
   //JoystickButton level3 = new JoystickButton(rightStick, 4); //HI!
 
@@ -93,10 +93,11 @@ public class OI {
     returnLift.whenPressed(new ResetLift());
 
     //nudge buttons
-    nudgeArmUp.whenPressed(new NudgeArm(2.0));
-    nudgeArmDown.whenPressed(new NudgeArm(-2.0));
-    nudgeWristUp.whenPressed(new NudgeWrist(2.0));
-    nudgeWristDown.whenPressed(new NudgeWrist(-2.0));
+    nudgeArmUp.whenPressed(new NudgeArm(3.0));
+    nudgeArmDown.whenPressed(new NudgeArm(-3.0));
+    nudgeWristUp.whenPressed(new NudgeWrist(3.0));
+    nudgeWristDown.whenPressed(new NudgeWrist(-3.0));
+    
 
 
     /*manualLift.whenPressed(new ManualLift(ManualLift.up));

@@ -63,7 +63,9 @@ public class ArmPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
+    //System.out.print(armEncoder.getDistance()+armOffset);
     return armEncoder.getDistance()+armOffset;
+
   }
 
   @Override
