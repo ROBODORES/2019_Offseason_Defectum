@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.I2C;
  */
 public class PixyCam extends Subsystem {
   private I2C port;
-	private int obnum = 20;
+  private int obnum = 20;
   public int[] checksum = new int[obnum];
   public int[] signature = new int[obnum];
   public int[] objectX = new int[obnum];

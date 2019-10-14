@@ -7,22 +7,25 @@
 
 package frc.robot.commands;
 
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class PixyInit extends Command {
   public PixyInit() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.m_pixyCam);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.m_pixyCam.setPanTilt(0, 0); //Set pan tilt to a fixed position
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.m_pixyCam.update();
   }
 
   // Make this return true when this Command no longer needs to run execute()
