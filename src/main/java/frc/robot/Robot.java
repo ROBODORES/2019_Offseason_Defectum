@@ -39,7 +39,6 @@ import frc.robot.subsystems.LEDs;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.IntakeArmPID;
 import frc.robot.subsystems.JeVois;
-import frc.robot.subsystems.PixyCam;
 
 //Commands
 import frc.robot.commands.MechanismInit;
@@ -53,7 +52,6 @@ public class Robot extends TimedRobot {
   public static Lift m_lift;
   public static IntakeArmPID m_intakeArm;
   public static JeVois m_jeVois;
-  public static PixyCam m_pixyCam;
 
   public static OI m_oi;
 
@@ -79,7 +77,6 @@ public class Robot extends TimedRobot {
     m_lift = new Lift();
     m_intakeArm = new IntakeArmPID();
     m_jeVois = new JeVois();
-    m_pixyCam = new PixyCam();
 
     m_oi = new OI();
   
