@@ -60,7 +60,7 @@ public class WristPID extends PIDSubsystem {
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
     //return wristMotor.getSelectedSensorPosition();
     //make more negative to move wrist higher
-    System.out.println((wristEncoder.getDistance()) + wristOffset);
+    System.out.print((wristEncoder.getDistance()) + wristOffset);
     return wristEncoder.getDistance()+wristOffset;
   }
 

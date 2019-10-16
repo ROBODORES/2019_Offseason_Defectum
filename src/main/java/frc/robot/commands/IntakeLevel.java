@@ -18,14 +18,14 @@ public class IntakeLevel extends CommandGroup {
     requires(Robot.m_intakeArm);
 
     //For intaking with the intake arm
-    /*addSequential(new SetArm(SetArm.LevelTwoHeight));
+    addSequential(new SetArm(SetArm.LevelTwoHeight));
     addSequential(new SetIntakeArm(SetIntakeArm.outOfTheAway));
     addSequential(new SetArm(SetArm.intakeLevelHeight));
-    addSequential(new SetIntakeArm(SetIntakeArm.intake));*/
+    addSequential(new SetIntakeArm(SetIntakeArm.intake));
 
     //For intaking without
-    addSequential(new SetArm(SetArm.LevelTwoHeight));
+    /*addSequential(new SetArm(SetArm.LevelTwoHeight));
     addSequential(new SetIntakeArm(SetIntakeArm.stowedAway));
-    addSequential(new SetArm(SetArm.intakeLevelHeight));
+    addSequential(new SetArm(SetArm.intakeLevelHeight));*/
   }
 }

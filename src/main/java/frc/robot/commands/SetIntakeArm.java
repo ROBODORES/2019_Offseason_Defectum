@@ -80,7 +80,7 @@ public class SetIntakeArm extends Command {
   }
 
   void intakePosition() {
-    Robot.m_intakeArm.setSetpoint(-147.5);
+    Robot.m_intakeArm.setSetpoint(-167.5);
     Robot.m_intakeArm.enable();
   }
 
