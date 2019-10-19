@@ -47,17 +47,16 @@ public class SetArm extends Command {
 
     isOOTW = false;
 
-    if (Robot.m_intakeArm.getPosition() < 300.0 && !isOOTW) { //if it's over the arm
-      Robot.m_arm.setSetpoint(60.0); //home position
+    if (Robot.m_intakeArm.getPosition() > -300.0 && Robot.m_intakeArm.getPosition() < 300.0 && !isOOTW) { //if it's over the arm and not at the floor
+      Robot.m_arm.setSetpoint(75.0); //home position kinda
       Robot.m_wrist.setSetpoint(-94.0);
       Robot.m_arm.enable();
       Robot.m_wrist.enable();
-      if (Robot.m_wrist.getPosition() < -90) { //if wrist is in the home position
+      System.out.println("Intake Arm Over The Arm, Moving To Home Position!");
+      if (Robot.m_wrist.getPosition() < -70.0) { //if wrist is in the home position
         Robot.m_intakeArm.setSetpoint(-346.5); //to the floor
         Robot.m_intakeArm.enable();
-        if (Robot.m_intakeArm.getPosition() < -300.0) { //if at the floor
-          isOOTW = true; //ISOOTW!!!!
-        }
+        System.out.println("At Home Position, Moving to the Floor!");
       }
     } else {
       isOOTW = true;
@@ -117,11 +116,11 @@ public class SetArm extends Command {
 
   void levelTwo() {
     if (hatchMode) { 
-      Robot.m_arm.setSetpoint(100.5);
-      Robot.m_wrist.setSetpoint(-10.3);
+      Robot.m_arm.setSetpoint(98.5);
+      Robot.m_wrist.setSetpoint(-11.3);
     } else {
-      Robot.m_arm.setSetpoint(104.5);
-      Robot.m_wrist.setSetpoint(-10.4);
+      Robot.m_arm.setSetpoint(116.5);
+      Robot.m_wrist.setSetpoint(-11.4);
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();

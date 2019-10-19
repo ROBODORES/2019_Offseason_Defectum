@@ -95,7 +95,7 @@ public class IntakeArmPID extends PIDSubsystem {
   }
 
   public void downForClimb() {
-    double speed = 0.32;
+    double speed = 0.30;
     intakeArmMotor.set(ControlMode.PercentOutput, -speed);
   }
 
