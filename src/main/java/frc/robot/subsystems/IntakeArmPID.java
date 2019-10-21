@@ -67,7 +67,7 @@ public class IntakeArmPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
-    double limiter = 0.6;
+    double limiter = 0.8;
     if (output > limiter) {
       output = limiter;
     } else if (output < -limiter) {

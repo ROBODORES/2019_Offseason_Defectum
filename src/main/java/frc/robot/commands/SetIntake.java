@@ -49,27 +49,34 @@ public class SetIntake extends Command {
   void setoStop() {
     boolean hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
     if (hatchMode) {
-      Robot.m_intake.stop();
+      Robot.m_intake.set(0.05);
+      Robot.m_intake.setSlammer(0.0);
     } else {
-      Robot.m_intake.stop();
+      Robot.m_intake.set(-0.05);
+      Robot.m_intake.setSlammer(0.0);
     }
   }
 
   void setoIntake() {
     boolean hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
     if (hatchMode) {
-      Robot.m_intake.expel();
+      //Robot.m_intake.expel();
+      Robot.m_intake.set(0.4);
+      Robot.m_intake.setSlammer(0.0);
     } else {
-      Robot.m_intake.intake();
+      Robot.m_intake.set(-0.7);
+      Robot.m_intake.setSlammer(-0.7);
     }
   }
 
   void setoOuttake() {
     boolean hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
     if (hatchMode) {
-      Robot.m_intake.intake();
+      Robot.m_intake.set(-0.8);
+      Robot.m_intake.setSlammer(0.0);
     } else {
-      Robot.m_intake.expel();
+      Robot.m_intake.set(0.7);
+      Robot.m_intake.setSlammer(0.7);
     }
   }
 

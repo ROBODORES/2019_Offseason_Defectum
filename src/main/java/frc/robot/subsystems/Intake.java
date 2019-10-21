@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -22,10 +23,20 @@ public class Intake extends Subsystem {
     armIntakeMotor = new VictorSPX(RobotMap.armIntakeMotor);
     lowerIntakeMotor = new VictorSPX(RobotMap.intakeRollerMotor);
     mandibleSolenoid = new Solenoid(RobotMap.pcm_id, RobotMap.mandibleSolenoid);
+    boolean hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
+    /*if (hatchMode) {
+      armIntakeMotor.set(ControlMode.PercentOutput, 0.1);
+    } else {
+      armIntakeMotor.set(ControlMode.PercentOutput, -0.05);
+    }*/
   }
 
   public void set(double speed) {
     armIntakeMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void setSlammer(double speed) {
+    lowerIntakeMotor.set(ControlMode.PercentOutput, speed);
   }
 
   public void setMandible(boolean mode) {

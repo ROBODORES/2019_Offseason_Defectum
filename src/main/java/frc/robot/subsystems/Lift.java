@@ -12,6 +12,7 @@ import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * Add your docs here.
@@ -20,12 +21,22 @@ public class Lift extends Subsystem {
   VictorSPX liftMotor = null;
   DigitalInput liftHallEffect = null;
   int mode = 0;
+  Boolean previousReturnVal = true;
+
+  //Timer for bounce detection
+  Timer bounceTimer = null;
 
   public Lift() {
     liftMotor = new VictorSPX(RobotMap.liftMotor);
     liftHallEffect = new DigitalInput(RobotMap.liftHallEffect);
-    if (!limitTriggered()) {
+    bounceTimer = new Timer();
+    /*if (!limitTriggered()) {
       mode = 1;
+    }*/
+
+    if (liftHallEffect.get()) { //not triggered
+      mode = 1;
+      previousReturnVal = false;
     }
   }
 
@@ -51,7 +62,31 @@ public class Lift extends Subsystem {
     liftMotor.set(ControlMode.PercentOutput, 0.0);
   }
 
-  public boolean limitTriggered() { 
+  public boolean limitTriggered() {
+    /*boolean returnVal = false;
+    if (!liftHallEffect.get()) { //if hall is triggered. 
+      if (bounceTimer.get() >= 0.5) { //also rejects if timer is less than 0.5 seconds
+        returnVal = true;
+      }
+    } else {
+      if (previousReturnVal) {
+        bounceTimer.reset();
+      }
+    }
+    previousReturnVal = returnVal;*/
+
+    /*boolean returnVal = !liftHallEffect.get();
+    if (previousReturnVal != returnVal) {
+      if (bounceTimer.get() < 0.5) {
+        returnVal = previousReturnVal;
+      }
+    } else {
+      bounceTimer.reset();
+    }
+
+    previousReturnVal = returnVal;*/
+
+    //return returnVal;
     return !liftHallEffect.get();
   }
 
