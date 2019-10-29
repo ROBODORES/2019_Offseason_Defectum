@@ -49,10 +49,10 @@ public class SetIntake extends Command {
   void setoStop() {
     boolean hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
     if (hatchMode) {
-      Robot.m_intake.set(0.05);
+      Robot.m_intake.set(0.2);
       Robot.m_intake.setSlammer(0.0);
     } else {
-      Robot.m_intake.set(-0.05);
+      Robot.m_intake.set(-0.08);
       Robot.m_intake.setSlammer(0.0);
     }
   }
@@ -83,13 +83,13 @@ public class SetIntake extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_intake.stop();
+    //Robot.m_intake.stop();
     //Robot.m_hatchGrabber.set(false);
   }
 

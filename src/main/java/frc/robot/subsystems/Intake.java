@@ -25,7 +25,7 @@ public class Intake extends Subsystem {
     mandibleSolenoid = new Solenoid(RobotMap.pcm_id, RobotMap.mandibleSolenoid);
     boolean hatchMode = Robot.m_oi.toggleSwitch.getRawButton(1);
     /*if (hatchMode) {
-      armIntakeMotor.set(ControlMode.PercentOutput, 0.1);
+      armIntakeMotor.set(ControlMode.PercentOutput, 0.2);
     } else {
       armIntakeMotor.set(ControlMode.PercentOutput, -0.05);
     }*/

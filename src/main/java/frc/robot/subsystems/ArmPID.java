@@ -24,7 +24,7 @@ public class ArmPID extends PIDSubsystem {
   double armOffset;
 
   public ArmPID() {
-    super("ArmPID", 0.05, 0.00005, 0.005);
+    super("ArmPID", 0.1, 0.00005, 0.005);
     setAbsoluteTolerance(0.05);
 
     getPIDController().setContinuous(false);
@@ -33,7 +33,7 @@ public class ArmPID extends PIDSubsystem {
     //armMotorFollower = new VictorSPX(RobotMap.armMotorFollower);
     //armMotorFollower.follow(armMotor);
 
-    armOffset = 47.0; //From initial calibration
+    armOffset = 50.0; //From initial calibration
 
     armEncoder = new Encoder(RobotMap.armSourceA, RobotMap.armSourceB);
     armEncoder.setReverseDirection(true);

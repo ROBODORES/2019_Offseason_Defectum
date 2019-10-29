@@ -12,6 +12,7 @@ import frc.robot.commands.CalibrateIntakeArm;
 import frc.robot.commands.LevelOne;
 import frc.robot.commands.SetIntakeArm;
 import frc.robot.commands.RaiseWithPreload;
+import frc.robot.commands.SetIntake;
 import frc.robot.Robot;
 
 public class MechanismInit extends CommandGroup {
@@ -19,7 +20,8 @@ public class MechanismInit extends CommandGroup {
     requires(Robot.m_intakeArm);
     requires(Robot.m_wrist);
     requires(Robot.m_arm);
-
+    
+    addSequential(new SetIntake(SetIntake.stop));
     addSequential(new CalibrateIntakeArm());
     addSequential(new SetIntakeArm(SetIntakeArm.toTheFloor));
     addSequential(new RaiseWithPreload());

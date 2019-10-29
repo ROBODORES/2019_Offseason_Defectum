@@ -24,14 +24,15 @@ public class Drive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double leftSpeed = -Robot.m_oi.leftStick.getY();
-    double rightSpeed = -Robot.m_oi.rightStick.getY();
-    double twistSpeed = Robot.m_oi.rightStick.getRawAxis(3);
-    double throttleLimiter = 0.5;
-    double twistLimiter = 0.4;
+    double bufferZone = 0.2; 
+    double minSpeed = 0.3;
+    double throttleSpeed = mapToExp((-Robot.m_oi.rightStick.getY()), bufferZone, minSpeed);
+    double twistSpeed = mapToExp((Robot.m_oi.rightStick.getRawAxis(3)), bufferZone, minSpeed);
+    double throttleLimiter = 0.8;
+    double twistLimiter = 0.8;
 
     //Robot.m_driveTrain.tankDrive(leftSpeed*limiter, rightSpeed*limiter);
-    Robot.m_driveTrain.arcadeDrive(rightSpeed*throttleLimiter, twistSpeed*twistLimiter);
+    Robot.m_driveTrain.arcadeDrive(throttleSpeed*throttleLimiter, twistSpeed*twistLimiter);
 
     if (Robot.m_oi.rightStick.getRawButton(1)) { //if trigger is pressed
       driveStraight();
@@ -40,6 +41,17 @@ public class Drive extends Command {
     if (Robot.m_oi.rightStick.getRawButtonReleased(RobotMap.gearSwitcherButton)) {
       Robot.m_driveTrain.switchGear();
     }
+  }
+
+  double mapToExp(double val, double bufferZone, double minSpeed) {
+    double returnVal = 0.0;
+    if (val >= bufferZone) {
+      returnVal = (1.0 - minSpeed)*Math.pow(val, 3) + minSpeed;
+    } else if (val <= -bufferZone) {
+      returnVal = (1.0 - minSpeed)*Math.pow(val, 3) - minSpeed;
+    }
+
+    return returnVal;
   }
 
   void driveStraight() {

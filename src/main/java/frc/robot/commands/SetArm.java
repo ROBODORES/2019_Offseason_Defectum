@@ -95,8 +95,8 @@ public class SetArm extends Command {
     if (hatchMode) {
       levelOne();
     } else {
-      Robot.m_arm.setSetpoint(50.73);
-      Robot.m_wrist.setSetpoint(0.0);
+      Robot.m_arm.setSetpoint(44.73);
+      Robot.m_wrist.setSetpoint(5.0);
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
@@ -107,8 +107,8 @@ public class SetArm extends Command {
       Robot.m_arm.setSetpoint(57.5);
       Robot.m_wrist.setSetpoint(33);
     } else {
-      Robot.m_arm.setSetpoint(71.83);
-      Robot.m_wrist.setSetpoint(21.0);
+      Robot.m_arm.setSetpoint(74.83);
+      Robot.m_wrist.setSetpoint(20.0); // -1
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
@@ -119,8 +119,8 @@ public class SetArm extends Command {
       Robot.m_arm.setSetpoint(98.5);
       Robot.m_wrist.setSetpoint(-11.3);
     } else {
-      Robot.m_arm.setSetpoint(116.5);
-      Robot.m_wrist.setSetpoint(-11.4);
+      Robot.m_arm.setSetpoint(114.5);
+      Robot.m_wrist.setSetpoint(-9.4);
     }
     Robot.m_arm.enable();
     Robot.m_wrist.enable();
@@ -184,6 +184,6 @@ public class SetArm extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
+    end(); //play war robots and battle cats lol
   }
 }
